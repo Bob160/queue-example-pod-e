@@ -9,20 +9,21 @@ public class Cashier {
     }
 
     public void attendToCustomers(Queue<Customer> customers) {
-        int customerSize = customers.size();
-        for (int i = 0; i < customerSize; i++) {
+        for (int i = customers.size(); i > 0; i--) {
             Customer currentCustomer = customers.poll();
+            assert currentCustomer != null;
             System.out.println("Attending to " + currentCustomer.getName());
         }
+
         System.out.println("Done attending to customers");
     }
 
     public void attendToCustomersBasedOnPriority(PriorityQueue<Customer> customers) {
         System.out.println("***** Attending to customers based on priority queue *****");
 
-        int customerSize = customers.size();
-        for (int i = 0; i < customerSize; i++) {
+        for (int i = customers.size(); i > 0; i--) {
             Customer currentCustomer = customers.poll();
+            assert currentCustomer != null;
             System.out.println("Attending to " + currentCustomer.getName());
         }
 
