@@ -25,24 +25,50 @@ public class Main {
 
         // Queue
         // Customer add products to cart -> add customer to queue -> pass the queue to the cashier method.
-        Queue<Customer> customerQueue = new LinkedList<>();
-        customerQueue.add(new Customer("Efiom", 3));
-        customerQueue.add(new Customer("Faith", 10));
-        customerQueue.add(new Customer("Abdullahi", 1));
-        customerQueue.add(new Customer("Emmanuel", 2));
-        customerQueue.add(new Customer("Sylvia", 9));
-        customerQueue.add(new Customer("Peter", 5));
+//        Queue<Customer> customerQueue = new LinkedList<>();
+//        customerQueue.add(new Customer("Efiom", 3));
+//        customerQueue.add(new Customer("Faith", 10));
+//        customerQueue.add(new Customer("Abdullahi", 1));
+//        customerQueue.add(new Customer("Emmanuel", 2));
+//        customerQueue.add(new Customer("Sylvia", 9));
+//        customerQueue.add(new Customer("Peter", 5));
 
-        PriorityQueue<Customer> customerPriorityQueue = new PriorityQueue<>();
-        customerPriorityQueue.add(new Customer("Efiom", 3));
-        customerPriorityQueue.add(new Customer("Abdullahi", 1));
-        customerPriorityQueue.add(new Customer("Emmanuel", 2));
-        customerPriorityQueue.add(new Customer("Sylvia", 9));
-        customerPriorityQueue.add(new Customer("Peter", 5));
-        customerPriorityQueue.add(new Customer("Faith", 10));
+//        PriorityQueue<Customer> customerPriorityQueue = new PriorityQueue<>();
+//        customerPriorityQueue.add(new Customer("Efiom", 3));
+//        customerPriorityQueue.add(new Customer("Abdullahi", 1));
+//        customerPriorityQueue.add(new Customer("Emmanuel", 2));
+//        customerPriorityQueue.add(new Customer("Sylvia", 9));
+//        customerPriorityQueue.add(new Customer("Peter", 5));
+//        customerPriorityQueue.add(new Customer("Faith", 10));
 
-        Cashier adedotun = new Cashier("Adedotun");
-        adedotun.attendToCustomers(customerQueue);
-        adedotun.attendToCustomersBasedOnPriority(customerPriorityQueue);
+//        Cashier adedotun = new Cashier("Adedotun");
+//        adedotun.attendToCustomers(customerQueue);
+//        adedotun.attendToCustomersBasedOnPriority(customerPriorityQueue);
+
+
+        // Multi Threading
+        Product garri = new Product("Garri", 30.69);
+        Product rice = new Product("Rice", 20.39);
+        Product beans = new Product("Beans", 50.49);
+        Product meat = new Product("Meat", 99.99);
+
+        Customer efiom = new Customer("Efiom", new ArrayList<>(Arrays.asList(garri, rice)));
+        Customer faith = new Customer("Faith", new ArrayList<>(Arrays.asList(beans, meat)));
+        Customer peter = new Customer("Peter", new ArrayList<>(Arrays.asList(meat, rice)));
+
+        Cashier adedotun = new Cashier();
+        adedotun.setCashierName("Adedotun");
+        adedotun.setCustomer(efiom);
+        adedotun.start();
+
+        Cashier emmanuel = new Cashier();
+        emmanuel.setCashierName("Emmanuel");
+        emmanuel.setCustomer(faith);
+        emmanuel.start();
+
+        Cashier abdullahi = new Cashier();
+        abdullahi.setCashierName("Abdullahi");
+        abdullahi.setCustomer(peter);
+        abdullahi.start();
     }
 }

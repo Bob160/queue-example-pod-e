@@ -1,28 +1,19 @@
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
 public class Customer implements Comparable<Customer> {
     private String name;
-    private int cartItems;
-    private List<Product> productInCart;
-
-    public Customer(String name, int cartItems) {
-        this.name = name;
-        this.cartItems = cartItems;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getCartItems() {
-        return cartItems;
-    }
+    private List<Product> productsInCart;
 
     @Override
     public int compareTo(Customer customer) {
-        if (cartItems < customer.cartItems) {
+        if (productsInCart.size() < customer.getProductsInCart().size()) {
             return 1;
-        } else if (cartItems > customer.cartItems) {
+        } else if (productsInCart.size() > customer.getProductsInCart().size()) {
             return -1;
         }
         return 0;
