@@ -70,5 +70,30 @@ public class Main {
         abdullahi.setCashierName("Abdullahi");
         abdullahi.setCustomer(peter);
         abdullahi.start();
+
+
+
+        // Using a class that implements Runnable
+        Customer sylvia = new Customer("Sylvia", new ArrayList<>(Arrays.asList(garri, rice)));
+        Customer abdul = new Customer("Abdul", new ArrayList<>(Arrays.asList(beans, meat)));
+        Customer peters = new Customer("Peters", new ArrayList<>(Arrays.asList(meat, rice)));
+
+        TestCashier adedotunTest = new TestCashier();
+        adedotunTest.setCashierName("AdedotunTest");
+        adedotunTest.setCustomer(sylvia);
+        Thread adedotunTestThread = new Thread(adedotunTest);
+        adedotunTestThread.start();
+
+        TestCashier emmanuelTest = new TestCashier();
+        emmanuelTest.setCashierName("EmmanuelTest");
+        emmanuelTest.setCustomer(abdul);
+        Thread emmanuelTestThread = new Thread(emmanuelTest);
+        emmanuelTestThread.start();
+
+        TestCashier abdullahiTest = new TestCashier();
+        abdullahiTest.setCashierName("AbdullahiTest");
+        abdullahiTest.setCustomer(peters);
+        Thread abdullahiTestThread = new Thread(abdullahiTest);
+        abdullahiTestThread.start();
     }
 }
